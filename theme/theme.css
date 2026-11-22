@@ -73,3 +73,29 @@
   border-radius: 50%;
   background: linear-gradient(135deg, var(--mx-bg-primary) 50%, var(--mx-bg-secondary) 50%);
 }
+
+:root {
+  --mx-editor-padding: 32px;
+  --mx-editor-max-width: 800px;
+  --mx-editor-center: 1;
+  --mx-editor-full-padding: 48px;
+  --mx-editor-full-start: 1000px;
+  --mx-editor-full-rate: 0.4;
+}
+
+.protyle-content[data-padding-mode=responsive]:not([data-fullwidth]) > :is(.protyle-top, .protyle-wysiwyg, .sy__backlink--bottom) {
+  --mx-pad: var(--mx-editor-padding);
+  --mx-free: max(0px, 100cqi - 2 * var(--mx-pad) - var(--mx-editor-max-width));
+}
+
+.protyle-content[data-padding-mode=responsive][data-fullwidth] > :is(.protyle-top, .protyle-wysiwyg, .sy__backlink--bottom) {
+  --mx-pad: var(--mx-editor-full-padding);
+  --mx-editor-center: 0;
+  --mx-free: max(0px, (100cqi - 2 * var(--mx-pad) - var(--mx-editor-full-start)) * var(--mx-editor-full-rate));
+}
+
+.protyle-content[data-padding-mode=responsive]:not([data-fullwidth]) > :is(.protyle-top, .protyle-wysiwyg, .sy__backlink--bottom),
+.protyle-content[data-padding-mode=responsive][data-fullwidth] > :is(.protyle-top, .protyle-wysiwyg, .sy__backlink--bottom) {
+  --b3-protyle-padding-left: calc(var(--mx-pad) + var(--mx-free) * var(--mx-editor-center) / 2);
+  --b3-protyle-padding-right: calc(var(--mx-pad) + var(--mx-free) * (1 - var(--mx-editor-center) / 2));
+}

@@ -156,6 +156,27 @@ The `--mx-` prefix avoids collisions with SiYuan and plugin variables.
 3. Add `{ id: "<name>", label: "<Label>" }` to `PRESETS` in `theme/theme.js`.
 4. Reload the SiYuan window. `theme.js` does not live-reload.
 
+## Editor width
+
+`src/_editor-width.scss` replaces SiYuan's stepped editor padding, which jumps at pane widths of 760, 952 and 2280px, with a **_continuous_** one.
+
+| Variable                   | Default  | Meaning                                                  |
+| -------------------------- | -------- | -------------------------------------------------------- |
+| `--mx-editor-padding`      | `32px`   | Gutter on each side when Adaptive Width is off           |
+| `--mx-editor-max-width`    | `800px`  | Text width when Adaptive Width is off                    |
+| `--mx-editor-center`       | `1`      | `1` = center, `0` = left (Adaptive Width is always left) |
+| `--mx-editor-full-padding` | `48px`   | Adaptive Width: gutter on each side                      |
+| `--mx-editor-full-start`   | `1000px` | Adaptive Width: text width where right padding grows     |
+| `--mx-editor-full-rate`    | `0.4`    | Adaptive Width: share of extra width added to the right  |
+
+- Padding = gutter + share of the free space beyond the max text width, so resizing never jumps.
+- The rules redefine SiYuan's `--b3-protyle-padding-left/right`. SiYuan's own rules then apply them to the text, title, icon/tags row, database properties and bottom backlinks. The cover image stays full-bleed.
+- SiYuan's **Adaptive Width** (global or per document) keeps the left gutter fixed. Past the start width, the right padding grows gradually, so long lines widen more slowly.
+- Override the variables in a **CSS snippet**, for example `:root { --mx-editor-center: 0; }`.
+
+> [!note]
+> Only the desktop editor is affected. Mobile, the history viewer and the database row tab use inline padding set by SiYuan's JS.
+
 ## Feature toggles (planned)
 
 Not implemented yet. Toggles such as colored headings would follow the same pattern:
