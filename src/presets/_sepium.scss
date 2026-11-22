@@ -1,0 +1,77 @@
+// Sepium: warm paper tones (default preset)
+@use "../preset" as *;
+
+@include preset("sepium", $default: true) {
+    // === Backgrounds ===
+    --mx-bg-primary: #f3f2ee; // HSV(48,5,243)
+    --mx-bg-secondary: #e6e4dc; // HSV(48,11,230)
+    --mx-bg-panel: var(--mx-bg-secondary);
+
+    // === Borders ===
+    --mx-border-faint: rgba(0, 0, 0, 0.1);
+    --mx-border-muted: rgba(32, 29, 29, 0.2);
+    --mx-border-normal: rgba(0, 0, 0, 0.25);
+    --mx-border-bold: rgba(0, 0, 0, 0.5);
+    --mx-border-divider: #afafac;
+    --mx-border-button: rgba(0, 0, 0, 0.3);
+
+    // === Tables ===
+    --mx-table-border: var(--mx-border-normal);
+    --mx-table-border-strong: var(--mx-border-bold);
+    --mx-table-header-bg: rgba(0, 0, 0, 0.1);
+    --mx-table-hover-bg: #f8e5aa; // HSV(45,80,248)
+
+    // === Text ===
+    --mx-text-normal: #1e1e1e;
+    --mx-text-muted: #565758; // HSV(210,6,88)
+    --mx-text-faint: rgba(0, 0, 0, 0.45);
+    --mx-selection: #bbcde8; // HSV(216,49,232)
+    --mx-text-mark-bg: #f5dd95; // HSV(45,100,245)
+    --mx-link-color: var(--mx-color-blue);
+    --mx-link-hover-color: #0b46bb;
+
+    // === Accents ===
+    --mx-color-red: #be1708; // HSV(5,244,190)
+    --mx-color-yellow: #c08000; // HSV(38,255,190)
+    --mx-color-green: #008c46; // HSV(150,255,140)
+    --mx-color-blue: #095acc; // HSV(215,244,204)
+    --mx-color-purple: #a417c0; // HSV(290,224,192)
+    --mx-color-magenta: #c00b66; // HSV(330,240,192)
+
+    // === Code inline ===
+    --mx-code-inline-bg: rgba(0, 0, 0, 0.08);
+    --mx-code-inline-fg: #444648;
+
+    // === Code blocks ===
+    --mx-code-bg: var(--mx-bg-secondary);
+    --mx-code-fg: var(--mx-text-normal);
+    --mx-code-gutter-fg: #999;
+
+    --mx-code-red: #a02715; // HSV(8,222,160)
+    --mx-code-yellow: #be7200; // HSV(36,255,190)
+    --mx-code-green: #008c46; // HSV(150,255,140)
+    --mx-code-blue-dark: #0909a0; // HSV(240,241,160)
+    --mx-code-blue: #095acc; // HSV(215,244,204)
+    --mx-code-purple: #a20bc0; // HSV(290,240,192)
+    --mx-code-magenta: #bb124b; // HSV(340,230,187)
+
+    --mx-code-comment: #878a90; // HSV(220,16,144)
+    --mx-code-operator: #777a80; // HSV(220,18,128)
+
+    --mx-code-class: #000;
+    --mx-code-namespace: var(--mx-code-purple);
+    --mx-code-keyword: var(--mx-code-blue-dark);
+    --mx-code-builtin: var(--mx-code-magenta);
+    --mx-code-type: var(--mx-code-purple);
+    --mx-code-function: var(--mx-color-blue);
+    --mx-code-decorator: var(--mx-code-yellow);
+    --mx-code-directive: var(--mx-code-yellow);
+
+    --mx-code-constant: var(--mx-color-magenta);
+    --mx-code-number: var(--mx-code-yellow);
+    --mx-code-string: var(--mx-code-green);
+
+    --mx-code-tag-name: var(--mx-code-purple);
+    --mx-code-attr-name: var(--mx-code-yellow);
+    --mx-code-attr-value: var(--mx-code-red);
+}

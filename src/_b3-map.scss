@@ -1,0 +1,5 @@
+// Maps the Midux palette onto SiYuan's --b3-* variables (minimal for now)
+:root {
+    --b3-theme-background: var(--mx-bg-primary);
+    --b3-theme-on-background: var(--mx-text-normal);
+}

@@ -1,0 +1,16 @@
+//-----------------------------------------------------------------------------
+// preset() wraps a preset's variables in its selector.
+// - Applies on <html data-midux-preset="NAME">, which theme.js sets.
+// - The default preset also applies on plain :root, so the theme works
+//   before theme.js runs.
+// - Also applies on the preset's menu swatch, so it shows its own colors.
+//-----------------------------------------------------------------------------
+@mixin preset($name, $default: false) {
+    $selector: ':root[data-midux-preset="#{$name}"], .midux-swatch[data-preset="#{$name}"]';
+    @if $default {
+        $selector: ":root, #{$selector}";
+    }
+    #{$selector} {
+        @content;
+    }
+}

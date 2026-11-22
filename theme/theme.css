@@ -1,0 +1,75 @@
+:root, :root[data-midux-preset=sepium], .midux-swatch[data-preset=sepium] {
+  --mx-bg-primary: #f3f2ee;
+  --mx-bg-secondary: #e6e4dc;
+  --mx-bg-panel: var(--mx-bg-secondary);
+  --mx-border-faint: rgba(0, 0, 0, 0.1);
+  --mx-border-muted: rgba(32, 29, 29, 0.2);
+  --mx-border-normal: rgba(0, 0, 0, 0.25);
+  --mx-border-bold: rgba(0, 0, 0, 0.5);
+  --mx-border-divider: #afafac;
+  --mx-border-button: rgba(0, 0, 0, 0.3);
+  --mx-table-border: var(--mx-border-normal);
+  --mx-table-border-strong: var(--mx-border-bold);
+  --mx-table-header-bg: rgba(0, 0, 0, 0.1);
+  --mx-table-hover-bg: #f8e5aa;
+  --mx-text-normal: #1e1e1e;
+  --mx-text-muted: #565758;
+  --mx-text-faint: rgba(0, 0, 0, 0.45);
+  --mx-selection: #bbcde8;
+  --mx-text-mark-bg: #f5dd95;
+  --mx-link-color: var(--mx-color-blue);
+  --mx-link-hover-color: #0b46bb;
+  --mx-color-red: #be1708;
+  --mx-color-yellow: #c08000;
+  --mx-color-green: #008c46;
+  --mx-color-blue: #095acc;
+  --mx-color-purple: #a417c0;
+  --mx-color-magenta: #c00b66;
+  --mx-code-inline-bg: rgba(0, 0, 0, 0.08);
+  --mx-code-inline-fg: #444648;
+  --mx-code-bg: var(--mx-bg-secondary);
+  --mx-code-fg: var(--mx-text-normal);
+  --mx-code-gutter-fg: #999;
+  --mx-code-red: #a02715;
+  --mx-code-yellow: #be7200;
+  --mx-code-green: #008c46;
+  --mx-code-blue-dark: #0909a0;
+  --mx-code-blue: #095acc;
+  --mx-code-purple: #a20bc0;
+  --mx-code-magenta: #bb124b;
+  --mx-code-comment: #878a90;
+  --mx-code-operator: #777a80;
+  --mx-code-class: #000;
+  --mx-code-namespace: var(--mx-code-purple);
+  --mx-code-keyword: var(--mx-code-blue-dark);
+  --mx-code-builtin: var(--mx-code-magenta);
+  --mx-code-type: var(--mx-code-purple);
+  --mx-code-function: var(--mx-color-blue);
+  --mx-code-decorator: var(--mx-code-yellow);
+  --mx-code-directive: var(--mx-code-yellow);
+  --mx-code-constant: var(--mx-color-magenta);
+  --mx-code-number: var(--mx-code-yellow);
+  --mx-code-string: var(--mx-code-green);
+  --mx-code-tag-name: var(--mx-code-purple);
+  --mx-code-attr-name: var(--mx-code-yellow);
+  --mx-code-attr-value: var(--mx-code-red);
+}
+
+:root[data-midux-preset=steel-grey], .midux-swatch[data-preset=steel-grey] {
+  --mx-bg-primary: #eff1f3;
+  --mx-bg-secondary: #dfe3e7;
+  --mx-border-divider: #a9aeb3;
+  --mx-table-hover-bg: #d9e4f0;
+}
+
+:root {
+  --b3-theme-background: var(--mx-bg-primary);
+  --b3-theme-on-background: var(--mx-text-normal);
+}
+
+.midux-swatch {
+  box-sizing: border-box;
+  border: 1px solid var(--mx-border-normal);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mx-bg-primary) 50%, var(--mx-bg-secondary) 50%);
+}
