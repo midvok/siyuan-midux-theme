@@ -1,0 +1,71 @@
+//-----------------------------------------------------------------------------
+// UI font sizes
+//-----------------------------------------------------------------------------
+// - SiYuan has no setting for the interface font size;
+//   --b3-font-size reaches only menus and dialogs.
+// - Most UI classes hard-code px sizes, so this partial overrides them with
+//   the same selectors (theme.css loads later, so equal specificity wins).
+//-----------------------------------------------------------------------------
+:root {
+  --mx-font-ui-normal: 14px;
+  --mx-font-ui-small: 13px;
+  --mx-font-ui-tiny: 12px;
+  --mx-font-ui-micro: 11px;
+
+  // Main layout and dock panels: text, titles, embedded editors
+  --mx-dock-title-font-size: var(--mx-font-ui-normal);
+  --mx-dock-font-size: var(--mx-font-ui-small);
+  --mx-dock-editor-font-size: var(--mx-font-ui-small);
+
+  // Window titlebar
+  --mx-titlebar-font-size: 13px;
+
+  // Mapping
+  --b3-font-size: var(--mx-font-ui-normal);
+  --b3-ui-list-height: calc(var(--mx-dock-font-size) * 2);
+  --b3-ui-menu-height: max(calc(var(--mx-font-ui-normal) * 2), 28px);
+}
+
+// === Titlebar ===
+// The selector needs the ID to match SiYuan's specificity (1,1,0)
+.toolbar #drag,
+.toolbar__text {
+  font-size: var(--mx-titlebar-font-size);
+}
+
+// === Document breadcrumbs ===
+.protyle-breadcrumb {
+  font-size: var(--mx-font-ui-small);
+}
+
+// === Main layout and dock panels ===
+// List rows follow the font size wherever it changes
+body > .fn__flex-1,
+.dockPanel {
+  --b3-ui-list-height: calc(var(--mx-dock-font-size) * 2);
+  font-size: var(--mx-dock-font-size);
+}
+
+// Editors in docks: Backlinks, Mentions, the backlinks below a document
+.dockPanel {
+  --b3-font-size-editor: var(--mx-dock-editor-font-size);
+}
+
+.dockPanel > .block__icons > .block__logo {
+  font-size: var(--mx-dock-title-font-size);
+}
+
+// Counters in lists and panel titles
+.counter {
+  font-size: var(--mx-font-ui-micro);
+}
+
+// === Menus ===
+[data-id="updateAndCreatedAt"] .b3-menu__label {
+  font-size: var(--mx-font-ui-tiny);
+}
+
+// === Settings pane ===
+.config-name {
+  font-size: var(--mx-font-ui-normal);
+}

@@ -99,3 +99,52 @@
   --b3-protyle-padding-left: calc(var(--mx-pad) + var(--mx-free) * var(--mx-editor-center) / 2);
   --b3-protyle-padding-right: calc(var(--mx-pad) + var(--mx-free) * (1 - var(--mx-editor-center) / 2));
 }
+
+:root {
+  --mx-font-ui-normal: 14px;
+  --mx-font-ui-small: 13px;
+  --mx-font-ui-tiny: 12px;
+  --mx-font-ui-micro: 11px;
+  --mx-dock-title-font-size: var(--mx-font-ui-normal);
+  --mx-dock-font-size: var(--mx-font-ui-small);
+  --mx-dock-editor-font-size: var(--mx-font-ui-small);
+  --mx-titlebar-font-size: 13px;
+  --b3-font-size: var(--mx-font-ui-normal);
+  --b3-ui-list-height: calc(var(--mx-dock-font-size) * 2);
+  --b3-ui-menu-height: max(calc(var(--mx-font-ui-normal) * 2), 28px);
+}
+
+.toolbar #drag,
+.toolbar__text {
+  font-size: var(--mx-titlebar-font-size);
+}
+
+.protyle-breadcrumb {
+  font-size: var(--mx-font-ui-small);
+}
+
+body > .fn__flex-1,
+.dockPanel {
+  --b3-ui-list-height: calc(var(--mx-dock-font-size) * 2);
+  font-size: var(--mx-dock-font-size);
+}
+
+.dockPanel {
+  --b3-font-size-editor: var(--mx-dock-editor-font-size);
+}
+
+.dockPanel > .block__icons > .block__logo {
+  font-size: var(--mx-dock-title-font-size);
+}
+
+.counter {
+  font-size: var(--mx-font-ui-micro);
+}
+
+[data-id=updateAndCreatedAt] .b3-menu__label {
+  font-size: var(--mx-font-ui-tiny);
+}
+
+.config-name {
+  font-size: var(--mx-font-ui-normal);
+}
