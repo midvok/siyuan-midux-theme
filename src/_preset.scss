@@ -6,11 +6,11 @@
 // - Also applies on the preset's menu swatch, so it shows its own colors.
 //-----------------------------------------------------------------------------
 @mixin preset($name, $default: false) {
-    $selector: ':root[data-midux-preset="#{$name}"], .midux-swatch[data-preset="#{$name}"]';
-    @if $default {
-        $selector: ":root, #{$selector}";
-    }
-    #{$selector} {
-        @content;
-    }
+  $selector: ':root[data-midux-preset="#{$name}"], .midux-swatch[data-preset="#{$name}"]';
+  @if $default {
+    $selector: ":root, #{$selector}";
+  }
+  #{$selector} {
+    @content;
+  }
 }

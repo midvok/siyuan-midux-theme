@@ -3,13 +3,13 @@
 @use "../preset" as *;
 
 @include preset("steel-grey") {
-    // === Backgrounds ===
-    --mx-bg-primary: #eff1f3;
-    --mx-bg-secondary: #dfe3e7;
+  // === Backgrounds ===
+  --mx-bg-primary: #eff1f3;
+  --mx-bg-secondary: #dfe3e7;
 
-    // === Borders ===
-    --mx-border-divider: #a9aeb3;
+  // === Borders ===
+  --mx-border-divider: #a9aeb3;
 
-    // === Tables ===
-    --mx-table-hover-bg: #d9e4f0;
+  // === Tables ===
+  --mx-table-hover-bg: #d9e4f0;
 }

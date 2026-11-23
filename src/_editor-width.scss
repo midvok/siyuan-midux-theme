@@ -31,14 +31,14 @@
 //   SiYuan's inline JS padding.
 //-----------------------------------------------------------------------------
 :root {
-    --mx-editor-padding: 32px; // Gutter on each side
-    --mx-editor-max-width: 800px; // Text width
-    --mx-editor-center: 1; // 1 = center, 0 = left
+  --mx-editor-padding: 32px; // Gutter on each side
+  --mx-editor-max-width: 800px; // Text width
+  --mx-editor-center: 1; // 1 = center, 0 = left
 
-    // === Adaptive Width only ===
-    --mx-editor-full-padding: 48px; // Gutter on each side
-    --mx-editor-full-start: 1000px; // Text width where right padding starts growing
-    --mx-editor-full-rate: 0.4; // Share of extra width added to the right padding
+  // === Adaptive Width only ===
+  --mx-editor-full-padding: 48px; // Gutter on each side
+  --mx-editor-full-start: 1000px; // Text width where right padding starts growing
+  --mx-editor-full-rate: 0.4; // Share of extra width added to the right padding
 }
 
 $editor: '.protyle-content[data-padding-mode="responsive"]';
@@ -46,20 +46,20 @@ $parts: ":is(.protyle-top, .protyle-wysiwyg, .sy__backlink--bottom)";
 
 // Adaptive Width off: own gutter, space beyond the max text width
 #{$editor}:not([data-fullwidth]) > #{$parts} {
-    --mx-pad: var(--mx-editor-padding);
-    --mx-free: max(0px, 100cqi - 2 * var(--mx-pad) - var(--mx-editor-max-width));
+  --mx-pad: var(--mx-editor-padding);
+  --mx-free: max(0px, 100cqi - 2 * var(--mx-pad) - var(--mx-editor-max-width));
 }
 
 // Adaptive Width on: own gutter, left-anchored; right padding grows past the start
 #{$editor}[data-fullwidth] > #{$parts} {
-    --mx-pad: var(--mx-editor-full-padding);
-    --mx-editor-center: 0;
-    --mx-free: max(0px, (100cqi - 2 * var(--mx-pad) - var(--mx-editor-full-start)) * var(--mx-editor-full-rate));
+  --mx-pad: var(--mx-editor-full-padding);
+  --mx-editor-center: 0;
+  --mx-free: max(0px, (100cqi - 2 * var(--mx-pad) - var(--mx-editor-full-start)) * var(--mx-editor-full-rate));
 }
 
 // Same specificity (0,4,0) as SiYuan's strongest rule; the theme loads later
 #{$editor}:not([data-fullwidth]) > #{$parts},
 #{$editor}[data-fullwidth] > #{$parts} {
-    --b3-protyle-padding-left: calc(var(--mx-pad) + var(--mx-free) * var(--mx-editor-center) / 2);
-    --b3-protyle-padding-right: calc(var(--mx-pad) + var(--mx-free) * (1 - var(--mx-editor-center) / 2));
+  --b3-protyle-padding-left: calc(var(--mx-pad) + var(--mx-free) * var(--mx-editor-center) / 2);
+  --b3-protyle-padding-right: calc(var(--mx-pad) + var(--mx-free) * (1 - var(--mx-editor-center) / 2));
 }

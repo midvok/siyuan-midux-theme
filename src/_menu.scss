@@ -1,7 +1,7 @@
 // Two-tone color swatch next to each preset in the Appearance Mode menu
 .midux-swatch {
-    box-sizing: border-box;
-    border: 1px solid var(--mx-border-normal);
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--mx-bg-primary) 50%, var(--mx-bg-secondary) 50%);
+  box-sizing: border-box;
+  border: 1px solid var(--mx-border-normal);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mx-bg-primary) 50%, var(--mx-bg-secondary) 50%);
 }
