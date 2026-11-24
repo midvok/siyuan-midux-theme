@@ -74,6 +74,20 @@
   background: linear-gradient(135deg, var(--mx-bg-primary) 50%, var(--mx-bg-secondary) 50%);
 }
 
+.b3-menu__items {
+  background-color: var(--b3-menu-background);
+}
+
+.config__tab-container,
+.config__tab-scroll {
+  background-color: var(--b3-theme-background);
+}
+
+.layout-tab-bar .item__text {
+  -webkit-mask-image: none;
+  text-overflow: ellipsis;
+}
+
 :root {
   --mx-editor-padding: 32px;
   --mx-editor-max-width: 800px;

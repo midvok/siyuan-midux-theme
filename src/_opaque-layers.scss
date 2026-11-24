@@ -1,0 +1,26 @@
+//-----------------------------------------------------------------------------
+// Subpixel (LCD, RGB) Antialiasing fixes for Chromium
+// - Chromium draws subpixel AA text only on layers with an opaque background
+//   and without a mask, filter or opacity effect.
+// - The menu item list scrolls in its own layer, but SiYuan leaves it
+//   transparent, so menu text fell back to grayscale.
+// - SiYuan fades tab titles with a mask, which always forces grayscale.
+//   An ellipsis replaces the fade.
+//-----------------------------------------------------------------------------
+
+// === Popup menus ===
+.b3-menu__items {
+  background-color: var(--b3-menu-background);
+}
+
+// === Settings pane ===
+.config__tab-container,
+.config__tab-scroll {
+  background-color: var(--b3-theme-background);
+}
+
+// === Tab bar ===
+.layout-tab-bar .item__text {
+  -webkit-mask-image: none;
+  text-overflow: ellipsis;
+}

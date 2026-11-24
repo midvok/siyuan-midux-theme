@@ -1,0 +1,444 @@
+//=============================================================================
+// SiYuan CSS Variables Reference (v3.8.12)
+//=============================================================================
+// Description:
+// - Every CSS variable a SiYuan theme can override, with English comments.
+// - Values are the defaults of the built-in light theme (daylight).
+// - Reference only: not imported by src/theme.scss and never compiled.
+//
+// Parts:
+// 1. daylight/theme.css: all variables, in the original order. The comments
+//    translate the Chinese originals and add short explanations.
+// 2. Defaults in SiYuan's base CSS: read with a built-in fallback value.
+//    daylight doesn't define them, but a theme can set them on :root.
+// 3. Set by SiYuan itself: per-element defaults and runtime values.
+//    Comments only, so nothing here is copied by accident.
+//
+// Sources:
+// - https://github.com/siyuan-note/siyuan/blob/v3.8.12/app/appearance/themes/daylight/theme.css
+// - The compiled base CSS of the v3.8.12 desktop app
+//
+// Update: 2026-11-24
+//=============================================================================
+
+//-----------------------------------------------------------------------------
+// PART 1: DAYLIGHT THEME VARIABLES
+//-----------------------------------------------------------------------------
+:root {
+  // === Theme colors ===
+  --b3-theme-primary: #3575f0; // accent: buttons, links, focus, selection
+  --b3-theme-primary-light: rgba(53, 117, 240, .54); // accent tint, strong
+  --b3-theme-primary-lighter: rgba(53, 117, 240, .38); // accent tint, medium
+  --b3-theme-primary-lightest: rgba(53, 117, 240, .12); // accent tint, faint: active tab, selected rows
+  --b3-theme-secondary: #ff9200; // second accent
+  --b3-theme-background: #fff; // editor, panels, menus
+  --b3-theme-background-light: #dfe0e1; // dividers, subtle fills
+  --b3-theme-surface: #f6f6f6; // inputs, hover areas, secondary panels
+  --b3-theme-surface-light: rgba(243, 243, 243, .86); // focused tab in an inactive window
+  --b3-theme-surface-lighter: #e0e0e0; // borders (via --b3-border-color)
+  --b3-theme-error: #d23f31;
+  --b3-theme-success: #65b84d;
+
+  // === Text colors ===
+  // on-X = text and icons drawn on top of X
+  --b3-theme-on-primary: #fff;
+  --b3-theme-on-secondary: #fff;
+  --b3-theme-on-background: #222; // main text
+  --b3-theme-on-surface: #5f6368; // secondary text, icons
+  --b3-theme-on-surface-light: rgba(95, 99, 104, .68); // muted text, placeholders
+  --b3-theme-on-surface-lighter: #C8CCD6; // faintest text
+  --b3-theme-on-error: #fff;
+
+  // === Fonts ===
+  // "Segoe UI" conflicts with the Noto-COLRv1-2.047 emoji font, so it was removed
+  --b3-font-family-emoji-reset: "Emojis Additional", "Emojis Reset"; // emoji fix fonts, put first in every stack
+  --b3-font-family-default: var(--b3-font-family-emoji-reset), BlinkMacSystemFont, Helvetica, "Luxi Sans", "DejaVu Sans", arial, sans-serif, emojis; // base stack, localized below
+  --b3-font-family: var(--b3-font-family-default); // UI font
+  --b3-font-family-protyle: var(--b3-font-family); // editor font
+  --b3-font-family-code: var(--b3-font-family-emoji-reset), "JetBrainsMono-Regular", mononoki, Consolas, "Liberation Mono", var(--b3-font-family), monospace; // code
+  --b3-font-family-graph: arial; // graph view labels
+  // Icon slots align emoji by their glyph ink. "Emojis Icon" is declared only on
+  // Windows 11; other platforms fall back to emojis. Body text keeps emojis as
+  // the fallback in --b3-font-family-default, so inline emoji keep their baseline.
+  --b3-font-family-emoji: "Emojis Additional", "Emojis Icon", emojis; // document and block icons
+  --b3-font-family-math: KaTeX_Math;
+  --b3-font-family-kbd: var(--b3-font-family-protyle); // <kbd> keys
+  --b3-font-size: 14px; // menus and dialogs only, not the editor
+
+  // === Window background ===
+  --b3-body-background: #EBECF0; // window background, visible in the gaps between panels
+  --b3-body-background-hl-opacity: 0.24; // strength of the top-left glow (0.12 when the window is unfocused)
+  --b3-body-background-hl: 219, 86%, 57%; // glow color as bare HSL values
+  --b3-layout-space: 4px; // gap between panels
+  --b3-layout-space-margin: -4px; // the gap as a negative margin
+
+  // === Top toolbar ===
+  --b3-toolbar-color: var(--b3-theme-on-surface-light); // icons
+  --b3-toolbar-hover: rgba(255, 255, 255, .68); // icon hover background
+  --b3-toolbar-left-mac: 74px; // space for the macOS window buttons
+
+  // === Borders ===
+  --b3-border-color: var(--b3-theme-surface-lighter);
+  --b3-border-radius: 6px; // default
+  --b3-border-radius-s: 3px; // small: tables
+  --b3-border-radius-b: 12px; // big: menus, dialogs
+
+  // === Scrollbar ===
+  --b3-scroll-color: rgba(0, 0, 0, .2); // thumb
+
+  // === Lists ===
+  --b3-list-hover: rgba(0, 0, 0, .075); // row hover
+  --b3-list-icon-hover: rgba(33, 34, 36, .1); // icon hover, pressed buttons
+
+  // === List mind map: parent–child lines ===
+  // Width is a number or px, in pixels before zoom. A node's own style beats the
+  // normal state. Selected beats hover. "initial" reuses the normal color;
+  // "auto" thickens the line based on the normal width and the zoom.
+  --b3-mindmap-line-color: var(--b3-border-color);
+  --b3-mindmap-line-width: 1.5;
+  --b3-mindmap-line-hover-color: initial;
+  --b3-mindmap-line-hover-width: auto;
+  --b3-mindmap-line-selected-color: initial;
+  --b3-mindmap-line-selected-width: auto;
+
+  // === List mind map: relation lines ===
+  // Same state rules as parent–child lines. The preview while drawing a new
+  // relation uses the normal color and width.
+  --b3-mindmap-relation-color: var(--b3-theme-primary);
+  --b3-mindmap-relation-width: 1.5;
+  --b3-mindmap-relation-hover-color: initial;
+  --b3-mindmap-relation-hover-width: auto;
+  --b3-mindmap-relation-selected-color: initial;
+  --b3-mindmap-relation-selected-width: auto;
+
+  // === Mind map: summary lines ===
+  // An explicit color always wins. Same state rules as parent–child lines.
+  // Printing uses the normal style.
+  --b3-mindmap-summary-color: var(--b3-border-color);
+  --b3-mindmap-summary-width: 1.5;
+  --b3-mindmap-summary-hover-color: initial;
+  --b3-mindmap-summary-hover-width: auto;
+  --b3-mindmap-summary-selected-color: initial;
+  --b3-mindmap-summary-selected-width: auto;
+
+  // === Menus ===
+  --b3-menu-background: var(--b3-theme-background);
+  --b3-menu-icon-color: rgba(0, 0, 0, .6);
+
+  // === Tooltips ===
+  --b3-tooltips-background: #312f35;
+  --b3-tooltips-color: var(--b3-theme-background-light); // text
+  --b3-tooltips-second-color: #7d7c7a; // secondary text
+  --b3-tooltips-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+
+  // === Empty states ===
+  --b3-empty-color: var(--b3-theme-on-surface-light); // placeholders, empty-block hints
+
+  // === Mask ===
+  --b3-mask-background: rgba(220, 220, 220, .4); // backdrop behind dialogs
+
+  // === Status colors ===
+  // Text and background pairs for chips, buttons and notices. They also feed
+  // text colors 1–4 below.
+  --b3-card-error-color: #790600;
+  --b3-card-error-background: #f5d1cf;
+  --b3-card-warning-color: #8a4f00;
+  --b3-card-warning-background: #ffe8c8;
+  --b3-card-info-color: #005599;
+  --b3-card-info-background: #d6eaf9;
+  --b3-card-success-color: #006b04;
+  --b3-card-success-background: #d7eed8;
+
+  // === Text color palette ===
+  // Colors 1–13 of the editor's text color picker; background1–13 are the
+  // matching highlight colors
+  --b3-font-color1: var(--b3-card-error-color);
+  --b3-font-color2: var(--b3-card-warning-color);
+  --b3-font-color3: var(--b3-card-info-color);
+  --b3-font-color4: var(--b3-card-success-color);
+  --b3-font-color5: var(--b3-theme-on-surface);
+  --b3-font-color6: var(--b3-theme-primary);
+  --b3-font-color7: var(--b3-theme-secondary);
+  --b3-font-color8: var(--b3-theme-error);
+  --b3-font-color9: #a40074;
+  --b3-font-color10: #007080;
+  --b3-font-color11: #006e2a;
+  --b3-font-color12: #6b5a00;
+  --b3-font-color13: var(--b3-theme-background);
+  --b3-font-background1: var(--b3-card-error-background);
+  --b3-font-background2: var(--b3-card-warning-background);
+  --b3-font-background3: var(--b3-card-info-background);
+  --b3-font-background4: var(--b3-card-success-background);
+  --b3-font-background5: #e2e3e4;
+  --b3-font-background6: #acd0fc;
+  --b3-font-background7: #fddaab;
+  --b3-font-background8: #ffb0a9;
+  --b3-font-background9: #fdbfff;
+  --b3-font-background10: #b1ffff;
+  --b3-font-background11: #affad1;
+  --b3-font-background12: #fff88f;
+  --b3-font-background13: var(--b3-theme-on-background);
+
+  // === Transitions ===
+  --b3-transition: all .2s cubic-bezier(0, 0, .2, 1) 0ms;
+  --b3-width-transition: width .2s cubic-bezier(0, 0, .2, 1) 0ms;
+  --b3-color-transition: color .2s cubic-bezier(0, 0, .2, 1) 0ms;
+  --b3-background-transition: background 20ms ease-in 0s;
+
+  // === Search highlight ===
+  --b3-highlight-color: #222; // text of a match
+  --b3-highlight-background: #ffff00; // all matches
+  --b3-highlight-current-background: #ff9632; // the current match
+
+  // === Dropdowns (select) ===
+  // The background matches menus, so a select inside a menu shows no colored
+  // patch. The SVG is the arrow icon.
+  --b3-select-background: url("data:image/svg+xml;utf8,<svg fill='rgba(95, 99, 104, .68)' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>") no-repeat right 2px center var(--b3-menu-background);
+
+  // === Switches ===
+  --b3-switch-background: #e1e3e1; // off: track
+  --b3-switch-border: var(--b3-theme-on-surface-light); // off: border and knob
+  --b3-switch-hover: rgba(31, 31, 31, 0.06); // off: hover
+  --b3-switch-checked: #fff; // on: knob
+  --b3-switch-checked-background: var(--b3-theme-primary); // on: track
+  --b3-switch-checked-hover: #d3e3fd; // on: hover
+  --b3-switch-checked-hover2: rgba(31, 31, 31, .06); // on: hover, second layer
+
+  // === Shadows ===
+  --b3-dock-shadow-color: rgba(0, 0, 0, .2); // floating docks
+  --b3-point-shadow: 0 0 1px 0 rgba(0, 0, 0, .1), 0 0 2px 0 rgba(0, 0, 0, .2); // small elements: slider thumbs, drag previews
+  --b3-dialog-shadow: 0 8px 24px rgba(0, 0, 0, .2); // dialogs and menus
+  --b3-button-shadow: 0 1px 2px 0 rgb(0 0 0 / .3), 0 1px 3px 1px rgb(0 0 0 /.15);
+  --b3-button-active-shadow: 0 2px 3px 1px rgb(0 0 0 / .3), 0 2px 4px 2px rgb(0 0 0 /.15);
+
+  // === Graph view ===
+  // Node colors by block type, then line colors
+  --b3-graph-p-point: #076f7e; // paragraph
+  --b3-graph-heading-point: #8250df;
+  --b3-graph-math-point: #80FFA5;
+  --b3-graph-code-point: #00DDFF;
+  --b3-graph-table-point: #37A2FF;
+  --b3-graph-list-point: #FF0087; // unordered list
+  --b3-graph-todo-point: #FFBF00; // task list
+  --b3-graph-olist-point: #b3005f; // ordered list
+  --b3-graph-listitem-point: #f65b00;
+  --b3-graph-bq-point: #8d48e3; // blockquote
+  --b3-graph-callout-point: var(--b3-theme-success);
+  --b3-graph-super-point: #dd79ff; // super block
+  --b3-graph-doc-point: #202124; // document
+  --b3-graph-tag-point: #dbf32f;
+  --b3-graph-asset-point: #05c091;
+  --b3-graph-line: rgba(0, 0, 0, .6); // default link
+  --b3-graph-ref-line: #d23f31; // block reference
+  --b3-graph-tag-line: #5f6b06; // document to tag
+  --b3-graph-tag-tag-line: #dbf32f; // tag to tag
+  --b3-graph-asset-line: #037457;
+  --b3-graph-hl-point: #c98a00; // highlighted node
+  --b3-graph-hl-line: #d23f31; // highlighted links
+
+  // === Inline code ===
+  --b3-protyle-code-background: rgba(27, 31, 35, .05);
+
+  // === Editor inline elements ===
+  // "inherit" = same as the surrounding text
+  --b3-protyle-inline-strong-color: inherit; // bold
+  --b3-protyle-inline-em-color: inherit; // italic
+  --b3-protyle-inline-u-color: inherit; // underline
+  --b3-protyle-inline-s-color: inherit; // strikethrough
+  --b3-protyle-inline-link-color: #4285f4;
+  --b3-protyle-inline-mark-background: rgb(252, 212, 126); // ==mark==
+  --b3-protyle-inline-mark-color: #202124;
+  --b3-protyle-inline-tag-color: rgba(0, 0, 0, .6); // #tag#
+  --b3-protyle-inline-blockref-color: #8957e5; // block reference
+  --b3-protyle-inline-fileref-color: #21862e; // file annotation reference
+
+  // === PDF viewer ===
+  --b3-pdf-selection: #d0e9c8; // text selection
+  --b3-pdf-selection-dark: #779170; // text selection, dark PDF mode
+  --sidebar-width: 200px; // PDF outline sidebar (PDF.js variable)
+  --b3-pdf-offset: 0; // loading bar offset
+  // Annotation highlight colors 1–7, for light and dark PDF mode
+  --b3-pdf-background1-light: #d23f31;
+  --b3-pdf-background1-dark: #d23f31;
+  --b3-pdf-background2-light: #f5822e;
+  --b3-pdf-background2-dark: #f5822e;
+  --b3-pdf-background3-light: #FACA5A;
+  --b3-pdf-background3-dark: #FACA5A;
+  --b3-pdf-background4-light: #7CC868;
+  --b3-pdf-background4-dark: #7CC868;
+  --b3-pdf-background5-light: #FC5C88;
+  --b3-pdf-background5-dark: #FC5C88;
+  --b3-pdf-background6-light: #69B0F2;
+  --b3-pdf-background6-dark: #69B0F2;
+  --b3-pdf-background7-light: #C885DA;
+  --b3-pdf-background7-dark: #C885DA;
+  --b3-pdf-dark: #212224; // background in dark PDF mode
+
+  // === Callouts ===
+  // Accent color per callout type
+  --b3-callout-note: var(--b3-theme-primary);
+  --b3-callout-tip: var(--b3-theme-success);
+  --b3-callout-caution: var(--b3-theme-error);
+  --b3-callout-important: var(--b3-protyle-inline-blockref-color);
+  --b3-callout-warning: var(--b3-highlight-current-background);
+
+  // === Tables ===
+  --b3-table-even-background: rgba(0, 0, 0, .04); // striped rows; also pinned header cells
+
+  // === Databases ===
+  --b3-av-gallery-shadow: rgba(0, 0, 0, 0.04) 0px 2px 4px 0px, var(--b3-border-color) 0px 0px 0px 1px; // gallery cards
+
+  // === Embed blocks ===
+  --b3-embed-background: transparent;
+
+  // === Blockquotes ===
+  --b3-bq-background: transparent;
+
+  // === Parent block background ===
+  // Opaque background behind pinned table headers and columns
+  --b3-parent-background: var(--b3-theme-background);
+}
+
+// Localized font stacks. Microsoft fonts' italics get covered by the adjacent
+// background, so arial comes before them.
+// https://github.com/siyuan-note/siyuan/issues/11841
+:root:lang(zh-CN) {
+  --b3-font-family-default: var(--b3-font-family-emoji-reset), BlinkMacSystemFont, Helvetica, "PingFang SC", "Luxi Sans", "DejaVu Sans", arial, "Microsoft Yahei", "Hiragino Sans GB", "Source Han Sans SC", sans-serif, emojis;
+}
+
+:root:lang(zh-TW) {
+  --b3-font-family-default: var(--b3-font-family-emoji-reset), BlinkMacSystemFont, Helvetica, "PingFang TC", "Luxi Sans", "DejaVu Sans", arial, "Microsoft JhengHei", "Hiragino Sans TC", "Source Han Sans TC", sans-serif, emojis;
+}
+
+:root:lang(ja) {
+  --b3-font-family-default: var(--b3-font-family-emoji-reset), BlinkMacSystemFont, Helvetica, "Luxi Sans", "DejaVu Sans", "Yu Gothic UI", arial, sans-serif, emojis;
+}
+
+// daylight also colors code blocks directly, without a variable
+.b3-typography .code-block,
+.protyle-wysiwyg .code-block,
+.mindmap-view__content .code-block {
+  background-color: rgba(27, 31, 35, .05);
+}
+
+//-----------------------------------------------------------------------------
+// PART 2: DEFAULTS IN SIYUAN'S BASE CSS
+//-----------------------------------------------------------------------------
+// - SiYuan reads these as var(--name, fallback). The values below are those
+//   fallbacks, so setting a variable on :root changes the default.
+// - UI density: SiYuan sets the compact values (in comments) on
+//   :where(:root[data-ui-density="compact"]), which has zero specificity.
+//   Setting a variable on :root therefore overrides BOTH densities. To change
+//   only the normal density, use :root:not([data-ui-density="compact"]).
+// - Inside the editor (.protyle-wysiwyg, .b3-typography) the --b3-ui-*
+//   variables are reset to initial, so they never affect document content.
+//-----------------------------------------------------------------------------
+:root {
+  // === UI density: top bar and window ===
+  --b3-ui-toolbar-height: 32px; // compact: 28px; top toolbar
+  --b3-ui-toolbar-control-height: 31.5px; // compact: 27.5px
+  --b3-ui-toolbar-control-padding: 9px; // compact: 7px
+  --b3-ui-toolbar-item-margin: 2px; // compact: 1px 2px
+  --b3-ui-window-control-padding: 13.25px; // compact: 9.25px; minimize, maximize, close
+  --b3-ui-browser-titlebar-height: 31px; // compact: 27px
+
+  // === UI density: tabs ===
+  --b3-ui-tab-min-height: 29px; // compact: 25px
+  --b3-ui-tab-margin: 6px 4px; // compact: 4px 3px
+  --b3-ui-tab-icon-padding: 4px 0 4px 8px; // compact: 2px 0 2px 6px
+  --b3-ui-tab-text-padding: 0 8px; // compact: 0 6px
+  --b3-ui-tab-close-padding: 7px 6px 6px 0; // compact: 5px 6px 4px 0
+  --b3-ui-tab-actions-margin-left: -8px; // compact: -7px
+
+  // === UI density: docks and panels ===
+  --b3-ui-dock-width: 42px; // compact: 34px; dock icon bar
+  --b3-ui-dock-padding: 5px; // compact: 4px
+  --b3-ui-dock-margin: 7px; // compact: 4px
+  --b3-ui-dock-split-height: 17px; // compact: 13px
+  --b3-ui-panel-height: 42px; // compact: 34px; panel header
+  --b3-ui-status-height: 32px; // compact: 28px; status bar
+  --b3-ui-list-height: 28px; // compact: max(24px, 1.5em); list rows (Midux sets this)
+
+  // === UI density: menus ===
+  --b3-ui-menu-height: 28px; // compact: max(26px, 1.5em); menu items (Midux sets this)
+  --b3-ui-menu-padding: 8px 0; // compact: 4px 0
+  --b3-ui-menu-item-padding: 0 8px; // compact: 0 6px
+
+  // === UI density: dialogs ===
+  --b3-ui-dialog-header-padding: 9px 16px; // compact: 5px 16px
+  --b3-ui-dialog-content-padding: 16px 16px; // compact: 12px 16px
+  --b3-ui-dialog-action-padding: 7px 16px; // compact: 5px 16px; button row
+  --b3-ui-dialog-close-padding: 8px; // compact: 4px
+
+  // === UI density: Settings pane ===
+  --b3-ui-config-padding: 24px; // compact: 16px
+  --b3-ui-config-row-padding: 16px 0; // compact: 12px 0
+  --b3-ui-config-title-margin: 24px 16px 16px 16px; // compact: 16px 12px 12px
+  --b3-ui-config-nav-height: 32px; // compact: 28px; navigation rows
+  --b3-ui-config-nav-margin: 8px; // compact: 6px
+
+  // === Menus ===
+  --b3-menu-items-max-height: none; // height cap for menu item lists, read by SiYuan's JS
+
+  // === Loading indicators ===
+  --b3-loading-color: var(--b3-theme-on-surface);
+  --b3-loading-size: 16px; // also 32px and 48px variants
+  --b3-loading-width: 2px; // ring thickness
+  --b3-loading-duration: 1s;
+
+  // === Fonts ===
+  --b3-font-family-emoji-file-tree: "Emojis File Tree", var(--b3-font-family-emoji); // document icons in the file tree
+
+  // === Editor ===
+  --b3-protyle-min-padding-left: 0px; // minimum left padding in responsive mode (64px in popovers)
+  --b3-protyle-page-scroll-gutter: 0px; // extra side padding in page-scroll mode
+  --b3-task-completed-color: var(--b3-theme-on-surface-light); // text of done tasks
+
+  // === Databases ===
+  --b3-av-calendar-background: var(--b3-theme-primary-lightest); // calendar: today
+  --b3-av-calendar-weekend-background: var(--b3-theme-surface); // calendar: weekends
+  --b3-av-item-opacity: 0.26; // kanban card tint strength (0.38 on hover)
+  --b3-av-kanban-drag-height: 100%; // drop indicator while dragging a kanban group
+}
+
+//-----------------------------------------------------------------------------
+// PART 3: SET BY SIYUAN ITSELF
+//-----------------------------------------------------------------------------
+// Per-element defaults: SiYuan sets these on specific selectors. A :root
+// value doesn't reach them; override with the same selector instead.
+// - --b3-protyle-padding-left/right: editor side padding, stepped by pane
+//   width (Midux replaces it, see src/_editor-width.scss)
+// - --b3-av-card-width: database gallery card width (180, 260, 320px)
+// - --b3-dynamicscroll-width: width of the editor's dynamic-loading scrollbar
+// - --b3-table-border-radius-top-left/-top-right/-bottom-left/-bottom-right:
+//   table corners, default --b3-border-radius-s
+// - --b3-table-frame-radius: corners of a table with a pinned header
+// - --b3-table-pinned-column-background, --b3-table-pinned-column-header-
+//   background: pinned table columns
+// - --b3-table-cell-list-start/-end/-inset: list position inside table cells,
+//   following the cell's text alignment
+// - --b3-icon-background-inset: hover background inset of some icon buttons
+// - --b3-snackbar-gap: gap around notification snackbars (4px on body)
+// - --b3-fullscreen-controls-width: window button area in fullscreen editing
+//
+// Runtime values: SiYuan sets these from settings or JS. Don't override them.
+// - --b3-font-size-editor, --b3-font-family-editor, --b3-font-family-editor-
+//   code, --b3-font-weight-editor-code: from Settings → Editor
+// - --b3-database-attr-columns, --b3-database-attr-column-flow: database
+//   attribute layout from Settings → Editor
+// - --b3-body-background-gradient: window background gradient from
+//   Settings → Appearance; --b3-window-background-image builds on it
+// - --b3-av-cell-background, --b3-av-item-background, --b3-av-kanban-
+//   background, --b3-av-card-aspect-ratio: per-item database colors and sizes
+// - --b3-table-frame-top/-left/-width/-height/-clip: pinned table header
+//   geometry
+// - --b3-pdf-background1 … 7: picked from the -light or -dark variants above
+// - --b3-dock-background-y, --b3-dock-right-width, --b3-toolbar-drag-left,
+//   --b3-toolbar-drag-right, --b3-width-protyle-wysiwyg, --b3-progress:
+//   layout measurements
+// - --b3-window-controls-height/-width/-top-height, --b3-snackbar-top,
+//   --b3-snackbar-right, --b3-snackbar-top-bar-height: window controls and
+//   notification placement
+// - --b3-legacy-light-color, --b3-legacy-dark-color: light/dark mode switches
+//   for legacy color handling
+// - --b3-icon-star-fill: marketplace rating stars
